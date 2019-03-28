@@ -4,6 +4,34 @@ provider:
   name: aws
   runtime: nodejs8.10
 
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      migrate: true # After starting DynamoDB local, create DynamoDB tables from the Serverless configuration.
+      seed: true # After starting and migrating dynamodb local, injects seed data into your tables.
+    seed:
+      authors:
+        sources:
+          - table: authorsTable
+            sources: [./seeds/authors.json]
+
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: authorsTable
+        AttributeDefinitions:
+          - AttributeName: uuid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: uuid
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1  
+
 functions:
   hello:
     handler: handler.hello
