@@ -7,7 +7,7 @@ provider:
 custom:
   dynamodb:
     start:
-      port: 8000
+      port: 8001
       migrate: true # After starting DynamoDB local, create DynamoDB tables from the Serverless configuration.
       seed: true # After starting and migrating dynamodb local, injects seed data into your tables.
     seed:
@@ -15,6 +15,10 @@ custom:
         sources:
           - table: authorsTable
             sources: [./seeds/authors.json]
+      publications:
+        sources:
+          - table: publicationsTable
+            sources: [./seeds/publications.json]            
 
 resources:
   Resources:
@@ -23,14 +27,27 @@ resources:
       Properties:
         TableName: authorsTable
         AttributeDefinitions:
-          - AttributeName: uuid
+          - AttributeName: name
             AttributeType: S
         KeySchema:
-          - AttributeName: uuid
+          - AttributeName: name
             KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1  
+        BillingMode: PAY_PER_REQUEST
+    publicationsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: publicationsTable
+        AttributeDefinitions:
+          - AttributeName: datetime
+            AttributeType: S
+          - AttributeName: title
+            AttributeType: S            
+        KeySchema:
+          - AttributeName: datetime
+            KeyType: HASH
+          - AttributeName: title
+            KeyType: RANGE            
+        BillingMode: PAY_PER_REQUEST          
 
 functions:
   hello:
