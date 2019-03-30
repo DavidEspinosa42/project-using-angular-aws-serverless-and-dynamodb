@@ -1,0 +1,12 @@
+get-author:
+  handler: functions/author/getAuthors.handler
+  events:
+    - http:
+        path: author
+        method: get
+delete-author:
+  handler: functions/author/deleteAuthor.handler
+  events:
+    - http:
+        path: author
+        method: delete

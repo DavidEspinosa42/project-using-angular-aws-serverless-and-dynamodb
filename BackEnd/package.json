@@ -1,18 +1,17 @@
 {
   "name": "sweatworks",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
+    "start": "serverless offline start",
+    "deploy:dev": "serverless deploy --stage dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Espinosa",
   "license": "ISC",
-  "dependencies": {
-    "aws-sdk": "^2.430.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "serverless-dynamodb-local": "0.2.35",
-    "serverless-offline": "^4.9.2"
+    "aws-sdk": "^2.432.0",
+    "serverless-dynamodb-local": "^0.2.37",
+    "serverless-offline": "^4.9.3"
   }
 }

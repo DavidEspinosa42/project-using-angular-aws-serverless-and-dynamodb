@@ -1,6 +1,6 @@
 'use strict';
 
-const dynamoDB = require('../dynamoDB')
+const dynamoDB = require('../dynamoDB');
 
 module.exports.handler = async (event) => {
   const params = {
@@ -11,7 +11,7 @@ module.exports.handler = async (event) => {
     const data = await dynamoDB.scan(params).promise();
     return {
       statusCode: 200,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data.Items)
     };
   } catch (error) {
     return {
