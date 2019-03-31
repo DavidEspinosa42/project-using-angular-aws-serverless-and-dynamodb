@@ -1,4 +1,4 @@
-get-author:
+get-authors:
   handler: functions/author/getAuthors.handler
   events:
     - http:
@@ -10,3 +10,15 @@ delete-author:
     - http:
         path: author
         method: delete
+create-author:
+  handler: functions/author/createAuthor.handler
+  events:
+    - http:
+        path: author
+        method: post
+update-author:
+  handler: functions/author/updateAuthor.handler
+  events:
+    - http:
+        path: author
+        method: put                

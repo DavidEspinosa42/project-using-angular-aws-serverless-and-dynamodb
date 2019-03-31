@@ -4,7 +4,7 @@ const dynamoDB = require('../dynamoDB');
 
 module.exports.handler = async (event) => {
   const params = {
-    TableName: process.env.authorsTable
+    TableName: process.env.publicationsTable
   };
 
   try {

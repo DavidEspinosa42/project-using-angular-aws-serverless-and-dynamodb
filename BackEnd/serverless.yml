@@ -7,18 +7,22 @@ provider:
   name: aws
   runtime: nodejs8.10
   region: us-east-2
+  stage: ${opt:stage, 'local'}
+  environment:
+    authorsTable: ${self:provider.stage}-authorsTable
+    publicationsTable: ${self:provider.stage}-publicationsTable
   iamRoleStatements:
     - Effect: "Allow"
       Action:
-        - dynamodb:DeleteItem
         - dynamodb:Scan
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
       Resource:
-        Fn::GetAtt:
-        - authorsTable
-        - Arn
+        - { "Fn::GetAtt": ["authorsTable", "Arn"] }
+        - { "Fn::GetAtt": ["publicationsTable", "Arn"] }        
 
 custom:
-  defaultStage: local
   dynamodb:
     start:
       port: 8000
@@ -28,11 +32,11 @@ custom:
     seed:
       authors:
         sources:
-          - table: authorsTable
+          - table: ${self:provider.environment.authorsTable}
             sources: [./seeds/authors.json]
       publications:
         sources:
-          - table: publicationsTable
+          - table: ${self:provider.environment.publicationsTable}
             sources: [./seeds/publications.json]            
 
 resources:
@@ -40,7 +44,7 @@ resources:
     authorsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: authorsTable
+        TableName: ${self:provider.environment.authorsTable}
         AttributeDefinitions:
           - AttributeName: name
             AttributeType: S
@@ -51,7 +55,7 @@ resources:
     publicationsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: publicationsTable
+        TableName: ${self:provider.environment.publicationsTable}
         AttributeDefinitions:
           - AttributeName: datetime
             AttributeType: S
@@ -66,6 +70,7 @@ resources:
 
 functions:
   - ${file(./functions/author/author-functions.yml)}
+  - ${file(./functions/publication/publication-functions.yml)}
 
 plugins:
   - serverless-dynamodb-local

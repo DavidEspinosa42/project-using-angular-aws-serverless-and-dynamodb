@@ -1,0 +1,24 @@
+get-publications:
+  handler: functions/publication/getPublications.handler
+  events:
+    - http:
+        path: publication
+        method: get
+delete-publication:
+  handler: functions/publication/deletePublication.handler
+  events:
+    - http:
+        path: publication
+        method: delete
+create-publication:
+  handler: functions/publication/createPublication.handler
+  events:
+    - http:
+        path: publication
+        method: post
+update-publication:
+  handler: functions/publication/updatePublication.handler
+  events:
+    - http:
+        path: publication
+        method: put                        

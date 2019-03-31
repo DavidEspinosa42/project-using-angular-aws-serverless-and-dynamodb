@@ -4,14 +4,18 @@ const dynamoDB = require('../dynamoDB');
 
 module.exports.handler = async (event) => {
   const params = {
-    TableName: process.env.authorsTable
+    TableName: process.env.publicationsTable,
+    Key: {
+      datetime: event.queryStringParameters.datetime,
+      title: event.queryStringParameters.title
+    }
   };
 
   try {
-    const data = await dynamoDB.scan(params).promise();
+    const data = await dynamoDB.delete(params).promise();
     return {
       statusCode: 200,
-      body: JSON.stringify(data.Items)
+      body: JSON.stringify(data)
     };
   } catch (error) {
     return {

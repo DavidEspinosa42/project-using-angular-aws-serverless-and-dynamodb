@@ -4,6 +4,9 @@
   "scripts": {
     "start": "serverless offline start",
     "deploy:dev": "serverless deploy --stage dev",
+    "deploy:test": "serverless deploy --stage test",
+    "deploy:stage": "serverless deploy --stage stage",
+    "deploy:prod": "serverless deploy --stage prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Espinosa",
