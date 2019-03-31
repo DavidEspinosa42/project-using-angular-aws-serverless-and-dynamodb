@@ -10,21 +10,25 @@ import {
   MatListModule,
   MatTableModule,
   MatPaginatorModule,
-  MatSortModule
+  MatSortModule,
+  MatInputModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { PublicationsComponent } from './publications/publications.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PublicationsComponent
+    PublicationsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
+    MatInputModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
