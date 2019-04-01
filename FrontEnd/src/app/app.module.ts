@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import {
@@ -11,7 +12,8 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
-  MatInputModule
+  MatInputModule,
+  MatTooltipModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -28,6 +30,7 @@ import { SearchComponent } from './search/search.component';
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
+    FormsModule,
     MatInputModule,
     MatToolbarModule,
     MatButtonModule,
@@ -36,7 +39,8 @@ import { SearchComponent } from './search/search.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

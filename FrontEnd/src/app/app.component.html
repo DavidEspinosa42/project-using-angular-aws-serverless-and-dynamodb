@@ -20,9 +20,8 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>SweatWorks</span>
       <span class="spacer"></span>
-      <app-search (search)="searchByTitle($event)"></app-search>
+      <app-search (searchEvent)="searchByTitle($event)"></app-search>
     </mat-toolbar>
     <app-publications [search]="search"></app-publications>
   </mat-sidenav-content>
