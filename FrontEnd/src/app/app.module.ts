@@ -19,12 +19,14 @@ import {
 import { AppComponent } from './app.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { SearchComponent } from './search/search.component';
+import { AuthorComponent } from './author/author.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PublicationsComponent,
-    SearchComponent
+    SearchComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,

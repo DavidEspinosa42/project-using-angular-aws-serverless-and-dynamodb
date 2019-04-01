@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { MatPaginator, MatSort, MatSortable, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
-export interface Publications {
+export interface Publication {
   datetime: string;
   author: string;
   title: string;
   body: string;
 }
 
-const publications: Publications[] = [
+const publications: Publication[] = [
   {
       datetime: '2019-03-28T13:55:10.308Z',
       author: 'Delia Owens',
@@ -89,15 +89,12 @@ const publications: Publications[] = [
   styleUrls: ['./publications.component.scss']
 })
 export class PublicationsComponent implements OnInit, OnChanges {
-  @Input() search: string;
+  @Input() searchTitle: string;
+  @Input() searchAuthor: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  public dataSource: MatTableDataSource<Publications>;
+  public dataSource: MatTableDataSource<Publication> = new MatTableDataSource(publications);
   public displayedColumns: string[] = ['datetime', 'author', 'title', 'body'];
-
-  constructor() {
-    this.dataSource = new MatTableDataSource(publications);
-  }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -105,12 +102,19 @@ export class PublicationsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (!changes.search.isFirstChange()) {
-      this.applyFilter(changes.search.currentValue);
+    if (changes.searchAuthor && !changes.searchAuthor.isFirstChange()) {
+      this.applyFilter(changes.searchAuthor.currentValue, 'author');
+    }
+
+    if (changes.searchTitle && !changes.searchTitle.isFirstChange()) {
+      this.applyFilter(changes.searchTitle.currentValue, 'title');
     }
   }
 
-  applyFilter(filterValue: string) {
+  applyFilter(filterValue: string, filterColumn: string) {
+    this.dataSource.filterPredicate = (data, filter: string): boolean => {
+      return data[filterColumn].toLowerCase().includes(filter);
+    };
     this.dataSource.filter = filterValue.trim().toLowerCase();
     this.dataSource.paginator.firstPage();
   }

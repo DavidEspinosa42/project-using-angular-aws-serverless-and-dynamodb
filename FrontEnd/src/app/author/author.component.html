@@ -1,0 +1,4 @@
+<mat-nav-list>
+  <a mat-list-item (click)="searchByAuthor('')">ALL AUTHORS</a>
+  <a *ngFor="let author of authors" mat-list-item (click)="searchByAuthor(author.name)">{{ author.name }}</a>
+</mat-nav-list>

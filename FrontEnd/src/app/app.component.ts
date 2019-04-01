@@ -8,7 +8,8 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public search: string;
+  public searchAuthor: string;
+  public searchTitle: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -18,7 +19,11 @@ export class AppComponent {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   public searchByTitle(searchEvent: string): void {
-    this.search = searchEvent;
+    this.searchTitle = searchEvent;
+  }
+
+  public searchByAuthor(searchEvent: string): void {
+    this.searchAuthor = searchEvent;
   }
 
 }
