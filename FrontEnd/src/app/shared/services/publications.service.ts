@@ -26,4 +26,12 @@ export class PublicationsService {
         catchError((error) => throwError(error))
       );
   }
+
+  public updatePublication(title: string, description: string): Observable<any> {
+    return this.http.put('http://localhost:3000/publication', description, { params: { title } })
+      .pipe(
+        map((response) => response),
+        catchError((error) => throwError(error))
+      );
+  }
 }

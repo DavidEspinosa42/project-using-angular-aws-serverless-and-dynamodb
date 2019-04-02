@@ -6,15 +6,12 @@ module.exports.handler = async (event) => {
   const params = {
     TableName: process.env.publicationsTable,
     Key:{
-      datetime: event.queryStringParameters.datetime,
       title: event.queryStringParameters.title
     },
-    UpdateExpression: "set author=:author, body=:body",
+    UpdateExpression: "set body=:body",
     ExpressionAttributeValues: {
-        ":author": event.queryStringParameters.author,
-        ":body": event.queryStringParameters.body
-    },
-    ReturnValues: "ALL_NEW"
+        ":body": event.body
+    }
   };
 
   try {

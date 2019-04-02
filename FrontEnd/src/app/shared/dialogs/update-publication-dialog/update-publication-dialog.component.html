@@ -1,0 +1,16 @@
+<form class="form" [formGroup]="publicationForm" (ngSubmit)="submit()">
+  <div mat-dialog-content>
+    <p>Author: {{ data.author }}</p>
+    <p>Title: {{ data.title }}</p>
+    <mat-form-field class="full-width">
+      <textarea rows="5" matInput formControlName="body" placeholder="Description" required></textarea>
+      <mat-error *ngIf="publicationForm.controls.body.hasError('required')">
+        Description is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]>Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>

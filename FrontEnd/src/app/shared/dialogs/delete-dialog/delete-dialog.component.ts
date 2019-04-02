@@ -9,11 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class DeleteDialogComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<DeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string
   ) { }
 
-  public cancel(): void {
-    this.dialogRef.close();
-  }
 }

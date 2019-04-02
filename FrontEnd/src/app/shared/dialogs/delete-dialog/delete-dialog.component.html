@@ -2,6 +2,6 @@
   <p>Are you sure you want to delete "{{ data }}"?</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="cancel()">No</button>
-  <button mat-button [mat-dialog-close]="data">Yes</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]>No</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data">Yes</button>
 </div>

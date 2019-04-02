@@ -3,6 +3,7 @@ import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/m
 import { PublicationsService } from '../shared/services/publications.service';
 import { Publication } from '../shared/interfaces/publication';
 import { DeleteDialogComponent } from '../shared/dialogs/delete-dialog/delete-dialog.component';
+import { UpdatePublicationDialogComponent } from '../shared/dialogs/update-publication-dialog/update-publication-dialog.component';
 
 @Component({
   selector: 'app-publications',
@@ -37,9 +38,23 @@ export class PublicationsComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.publicationsService.deletePublication(result)
-        .subscribe((response) => {
+        .subscribe(() => {
           this.getPublications();
-        }, (error) => {
+        }, (error: Error) => {
+          console.error(error.message);
+        });
+      }
+    });
+  }
+
+  public editPublication(row: Publication): void {
+    const dialogRef = this.dialog.open(UpdatePublicationDialogComponent, { data: row });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result !== row.body) {
+        this.publicationsService.updatePublication(row.title, result)
+        .subscribe(() => {
+          this.getPublications();
+        }, (error: Error) => {
           console.error(error.message);
         });
       }
@@ -67,7 +82,7 @@ export class PublicationsComponent implements OnInit, OnChanges {
         this.dataSource = new MatTableDataSource(this.publications);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      }, (error) => {
+      }, (error: Error) => {
         console.error(error.message);
       });
   }

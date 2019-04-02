@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,7 +15,8 @@ import {
   MatSortModule,
   MatInputModule,
   MatTooltipModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSelectModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { PublicationsComponent } from './publications/publications.component';
 import { SearchComponent } from './publications/search/search.component';
 import { AuthorComponent } from './author/author.component';
 import { DeleteDialogComponent } from './shared/dialogs/delete-dialog/delete-dialog.component';
+import { UpdatePublicationDialogComponent } from './shared/dialogs/update-publication-dialog/update-publication-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { DeleteDialogComponent } from './shared/dialogs/delete-dialog/delete-dia
     PublicationsComponent,
     SearchComponent,
     AuthorComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    UpdatePublicationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +51,14 @@ import { DeleteDialogComponent } from './shared/dialogs/delete-dialog/delete-dia
     MatPaginatorModule,
     MatSortModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
-  entryComponents: [DeleteDialogComponent],
+  entryComponents: [
+    DeleteDialogComponent,
+    UpdatePublicationDialogComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
