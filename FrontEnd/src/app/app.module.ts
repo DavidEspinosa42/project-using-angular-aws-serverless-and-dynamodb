@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
 import {
   MatToolbarModule,
   MatButtonModule,
@@ -18,7 +19,7 @@ import {
 
 import { AppComponent } from './app.component';
 import { PublicationsComponent } from './publications/publications.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './publications/search/search.component';
 import { AuthorComponent } from './author/author.component';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AuthorComponent } from './author/author.component';
     BrowserAnimationsModule,
     LayoutModule,
     FormsModule,
+    HttpClientModule,
     MatInputModule,
     MatToolbarModule,
     MatButtonModule,

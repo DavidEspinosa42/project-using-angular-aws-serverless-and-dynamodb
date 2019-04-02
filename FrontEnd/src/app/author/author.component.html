@@ -1,4 +1,6 @@
-<mat-nav-list>
+<mat-nav-list *ngIf="authors && authors.length > 0">
   <a mat-list-item (click)="searchByAuthor('')">ALL AUTHORS</a>
   <a *ngFor="let author of authors" mat-list-item (click)="searchByAuthor(author.name)">{{ author.name }}</a>
 </mat-nav-list>
+
+<p class="error-message" *ngIf="!(authors && authors.length > 0)">Authors not found.</p>

@@ -1,4 +1,5 @@
-<div class="mat-elevation-z8">
+<app-search (searchEvent)="searchByTitle($event)" [searchAuthor]="searchAuthor" [publications]="publications"></app-search>
+<div [hidden]="!(publications && publications.length > 0)" class="mat-elevation-z8">
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort matSortDisableClear aria-label="Publications Table">
     <!-- Date Column -->
     <ng-container matColumnDef="datetime">
@@ -29,9 +30,13 @@
   </table>
 
   <mat-paginator #paginator
-      [length]="dataSource.data.length"
+      [length]="dataSource?.data.length"
       [pageIndex]="0"
-      [pageSize]="5"
+      [pageSize]="10"
       [pageSizeOptions]="[5, 10, 25, 50]">
   </mat-paginator>
+</div>
+
+<div class="error-message" [hidden]="(publications && publications.length > 0)">
+  Publications not found.
 </div>
