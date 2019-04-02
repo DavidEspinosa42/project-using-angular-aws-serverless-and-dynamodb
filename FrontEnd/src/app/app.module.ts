@@ -14,20 +14,23 @@ import {
   MatPaginatorModule,
   MatSortModule,
   MatInputModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatDialogModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { SearchComponent } from './publications/search/search.component';
 import { AuthorComponent } from './author/author.component';
+import { DeleteDialogComponent } from './shared/dialogs/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PublicationsComponent,
     SearchComponent,
-    AuthorComponent
+    AuthorComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +47,10 @@ import { AuthorComponent } from './author/author.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
+  entryComponents: [DeleteDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

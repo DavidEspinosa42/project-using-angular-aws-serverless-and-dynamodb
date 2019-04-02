@@ -18,4 +18,12 @@ export class PublicationsService {
         catchError((error) => throwError(error))
       );
   }
+
+  public deletePublication(title: string): Observable<any> {
+    return this.http.delete('http://localhost:3000/publication', { params: { title } })
+      .pipe(
+        map((response) => response),
+        catchError((error) => throwError(error))
+      );
+  }
 }

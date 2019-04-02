@@ -57,15 +57,11 @@ resources:
       Properties:
         TableName: ${self:provider.environment.publicationsTable}
         AttributeDefinitions:
-          - AttributeName: datetime
-            AttributeType: S
           - AttributeName: title
-            AttributeType: S            
+            AttributeType: S         
         KeySchema:
-          - AttributeName: datetime
-            KeyType: HASH
           - AttributeName: title
-            KeyType: RANGE            
+            KeyType: HASH           
         BillingMode: PAY_PER_REQUEST          
 
 functions:
