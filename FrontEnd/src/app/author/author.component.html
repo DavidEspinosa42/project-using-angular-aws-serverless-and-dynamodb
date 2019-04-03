@@ -1,18 +1,21 @@
 <mat-toolbar color="primary">
   Authors
-  <button
-  type="button"
-  aria-label="Add author"
-  mat-icon-button
-  matTooltip="Add author"
-  (click)="createAuthor()">
-  <mat-icon>add_circle</mat-icon>
+  <button type="button" aria-label="Add author" mat-icon-button matTooltip="Add author" (click)="createAuthor()">
+    <mat-icon>add_circle</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-nav-list *ngIf="authors && authors.length > 0">
   <a mat-list-item (click)="searchByAuthor('')">ALL AUTHORS</a>
-  <a *ngFor="let author of authors" mat-list-item (click)="searchByAuthor(author.name)">{{ author.name }}</a>
+  <mat-list-item *ngFor="let author of authors">
+    <a matTooltip="{{ author.email }} | {{ author.DOB | date:'dd MMM yyyy' }}" (click)="searchByAuthor(author.name)">
+      {{ author.name }}
+    </a>
+    <span class="spacer"></span>
+    <button mat-icon-button matTooltip="Delete" color="primary" (click)="deleteAuthor(author.name)">
+      <mat-icon aria-label="Delete">delete</mat-icon>
+    </button>
+  </mat-list-item>
 </mat-nav-list>
 
 <p class="error-message" *ngIf="!(authors && authors.length > 0)">Authors not found.</p>

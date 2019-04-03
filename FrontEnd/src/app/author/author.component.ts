@@ -3,6 +3,7 @@ import { Author } from '../shared/interfaces/author';
 import { AuthorsService } from '../shared/services/authors.service';
 import { MatDialog } from '@angular/material';
 import { AddAuthorDialogComponent } from '../shared/dialogs/add-author-dialog/add-author-dialog.component';
+import { DeleteDialogComponent } from '../shared/dialogs/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-author',
@@ -40,8 +41,21 @@ export class AuthorComponent implements OnInit {
     const dialogRef = this.dialog.open(AddAuthorDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result)
         this.authorsService.createAuthor(result)
+        .subscribe(() => {
+          this.getAuthors();
+        }, (error: Error) => {
+          console.error(error.message);
+        });
+      }
+    });
+  }
+
+  public deleteAuthor(name: string): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, { data: name });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.authorsService.deleteAuthor(result)
         .subscribe(() => {
           this.getAuthors();
         }, (error: Error) => {

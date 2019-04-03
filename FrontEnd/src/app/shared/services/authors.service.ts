@@ -30,4 +30,12 @@ export class AuthorsService {
         catchError((error) => throwError(error))
       );
   }
+
+  public deleteAuthor(name: string): Observable<any> {
+    return this.http.delete('http://localhost:3000/author', { params: { name } })
+      .pipe(
+        map((response) => response),
+        catchError((error) => throwError(error))
+      );
+  }
 }

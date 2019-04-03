@@ -10,8 +10,8 @@ module.exports.handler = async (event) => {
     },
     UpdateExpression: "set email=:email, DOB=:dob",
     ExpressionAttributeValues: {
-        ":email": event.queryStringParameters.email,
-        ":dob": event.queryStringParameters.DOB
+        ":email": JSON.parse(event.body).email,
+        ":dob": JSON.parse(event.body).DOB
     },
     ReturnValues: "ALL_NEW"
   };
