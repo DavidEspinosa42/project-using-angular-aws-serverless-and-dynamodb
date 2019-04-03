@@ -2,9 +2,12 @@
   "name": "sweat-works",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:dev": "ng build -c dev",
+    "build:test": "ng build -c test",
+    "build:stage": "ng build -c stage",
+    "build:prod": "ng build -c production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

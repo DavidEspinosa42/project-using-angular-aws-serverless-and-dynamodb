@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Author } from '../interfaces/author';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthorsService {
   constructor(private http: HttpClient) { }
 
   public getAuthors(): Observable<Author[]> {
-    return this.http.get('http://localhost:3000/author')
+    return this.http.get(`${environment.endpoint}/author`)
       .pipe(
         map((response: Author[]) =>
           response.sort((a, b) => {
@@ -24,7 +25,7 @@ export class AuthorsService {
   }
 
   public createAuthor(body: Author): Observable<any> {
-    return this.http.post('http://localhost:3000/author', body )
+    return this.http.post(`${environment.endpoint}/author`, body )
       .pipe(
         map((response) => response),
         catchError((error) => throwError(error))
@@ -32,7 +33,7 @@ export class AuthorsService {
   }
 
   public deleteAuthor(name: string): Observable<any> {
-    return this.http.delete('http://localhost:3000/author', { params: { name } })
+    return this.http.delete(`${environment.endpoint}/author`, { params: { name } })
       .pipe(
         map((response) => response),
         catchError((error) => throwError(error))

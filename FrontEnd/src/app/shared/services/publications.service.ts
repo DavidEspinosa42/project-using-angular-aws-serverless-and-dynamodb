@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Publication } from '../interfaces/publication';
 import { Observable, throwError, Subject } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class PublicationsService {
   public addPublicationButtonClick() { this.addPublicationButton.next(); }
 
   public getPublications(): Observable<Publication[]> {
-    return this.http.get('http://localhost:3000/publication')
+    return this.http.get(`${environment.endpoint}/publication`)
       .pipe(
         map((response: Publication[]) => response),
         catchError((error) => throwError(error))
@@ -24,7 +25,7 @@ export class PublicationsService {
   }
 
   public deletePublication(title: string): Observable<any> {
-    return this.http.delete('http://localhost:3000/publication', { params: { title } })
+    return this.http.delete(`${environment.endpoint}/publication`, { params: { title } })
       .pipe(
         map((response) => response),
         catchError((error) => throwError(error))
@@ -32,7 +33,7 @@ export class PublicationsService {
   }
 
   public createPublication(body: Publication): Observable<any> {
-    return this.http.post('http://localhost:3000/publication', body )
+    return this.http.post(`${environment.endpoint}/publication`, body )
       .pipe(
         map((response) => response),
         catchError((error) => throwError(error))
@@ -40,7 +41,7 @@ export class PublicationsService {
   }
 
   public updatePublication(title: string, description: string): Observable<any> {
-    return this.http.put('http://localhost:3000/publication', description, { params: { title } })
+    return this.http.put(`${environment.endpoint}/publication`, description, { params: { title } })
       .pipe(
         map((response) => response),
         catchError((error) => throwError(error))
