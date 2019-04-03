@@ -1,3 +1,15 @@
+<mat-toolbar color="primary">
+  Authors
+  <button
+  type="button"
+  aria-label="Add author"
+  mat-icon-button
+  matTooltip="Add author"
+  (click)="createAuthor()">
+  <mat-icon>add_circle</mat-icon>
+  </button>
+</mat-toolbar>
+
 <mat-nav-list *ngIf="authors && authors.length > 0">
   <a mat-list-item (click)="searchByAuthor('')">ALL AUTHORS</a>
   <a *ngFor="let author of authors" mat-list-item (click)="searchByAuthor(author.name)">{{ author.name }}</a>

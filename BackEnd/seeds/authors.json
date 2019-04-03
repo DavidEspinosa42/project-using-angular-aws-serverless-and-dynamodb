@@ -2,56 +2,56 @@
     {
         "name": "Delia Owens",
         "email": "delia@example.com",
-        "DOB": "1990-03-22"
+        "DOB": "1990-03-22T00:00:00.000Z"
     },
     {
         "name": "Harlan Coben",
         "email": "harlan@example.com",
-        "DOB": "1970-05-21"
+        "DOB": "1970-05-21T00:00:00.000Z"
     },
     {
         "name": "Clive Cussler",
         "email": "clive@example.com",
-        "DOB": "1985-03-12"
+        "DOB": "1985-03-12T00:00:00.000Z"
     },
     {
         "name": "James Patterson",
         "email": "james@example.com",
-        "DOB": "1991-04-28"
+        "DOB": "1991-04-28T00:00:00.000Z"
     },
     {
         "name": "A.J. Finn",
         "email": "aj@example.com",
-        "DOB": "1986-01-11"
+        "DOB": "1986-01-11T00:00:00.000Z"
     },
     {
         "name": "C.J. Box",
         "email": "cj@example.com",
-        "DOB": "1987-02-22"
+        "DOB": "1987-02-22T00:00:00.000Z"
     },
     {
         "name": "Pam Jenoff",
         "email": "pam@example.com",
-        "DOB": "1978-09-21"
+        "DOB": "1978-09-21T00:00:00.000Z"
     },
     {
         "name": "Greg Iles",
         "email": "greg@example.com",
-        "DOB": "1979-03-29"
+        "DOB": "1979-03-29T00:00:00.000Z"
     },
     {
         "name": "Danielle Steel",
         "email": "danielle@example.com",
-        "DOB": "1970-07-15"
+        "DOB": "1970-07-15T00:00:00.000Z"
     },
     {
         "name": "Alex Michaelides",
         "email": "alex@example.com",
-        "DOB": "1982-06-16"
+        "DOB": "1982-06-16T00:00:00.000Z"
     },
     {
         "name": "Kate Quinn",
         "email": "kate@example.com",
-        "DOB": "1992-01-28"
+        "DOB": "1992-01-28T00:00:00.000Z"
     }
 ]

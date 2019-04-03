@@ -22,4 +22,12 @@ export class AuthorsService {
         catchError((error) => throwError(error))
       );
   }
+
+  public createAuthor(body: Author): Observable<any> {
+    return this.http.post('http://localhost:3000/author', body )
+      .pipe(
+        map((response) => response),
+        catchError((error) => throwError(error))
+      );
+  }
 }

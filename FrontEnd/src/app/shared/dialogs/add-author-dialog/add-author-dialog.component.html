@@ -1,0 +1,32 @@
+<form class="form" [formGroup]="authorForm" (ngSubmit)="submit()">
+  <div mat-dialog-content>
+    <h2>Add Author</h2>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="name" placeholder="Name" required>
+      <mat-error *ngIf="authorForm.controls.name.hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="email" placeholder="Email" required>
+      <mat-error *ngIf="authorForm.controls.email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="authorForm.controls.email.hasError('email')">
+          Not a valid <strong>email</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput [matDatepicker]="picker" formControlName="DOB" placeholder="Choose a date" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="authorForm.controls.DOB.hasError('required')">
+        Date of birth is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]>Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>

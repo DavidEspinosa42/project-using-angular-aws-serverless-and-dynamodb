@@ -6,9 +6,9 @@ module.exports.handler = async (event) => {
   const params = {
     TableName: process.env.authorsTable,
     Item: { 
-      name: event.queryStringParameters.name,
-      email: event.queryStringParameters.email,
-      DOB: event.queryStringParameters.DOB
+      name: JSON.parse(event.body).name,
+      email: JSON.parse(event.body).email,
+      DOB: JSON.parse(event.body).DOB
     }
   };
 

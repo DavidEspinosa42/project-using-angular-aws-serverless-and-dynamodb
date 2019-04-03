@@ -3,7 +3,6 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
-    <mat-toolbar>Authors</mat-toolbar>
     <app-author (searchEvent)="searchByAuthor($event)"></app-author>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -24,7 +23,7 @@
         matTooltip="Add Publication"
         (click)="addPublication()">
         <mat-icon>add_circle</mat-icon>
-    </button>
+      </button>
     </mat-toolbar>
     <app-publications [searchAuthor]="searchAuthor"></app-publications>
   </mat-sidenav-content>
