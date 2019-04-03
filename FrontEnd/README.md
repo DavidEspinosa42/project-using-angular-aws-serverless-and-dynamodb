@@ -1,27 +1,18 @@
-# SweatWorks
+Inside the Frontend folder type the command:
+npm install
+You can start the frontend for development with:
+npm start
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
+If you want to deploy to AWS, first you'll have to add to the environments files the URL of the endpoint you got when deploying the backend.
 
-## Development server
+After that, for deployment you can use the following commands:
+npm run deploy:dev
+npm run deploy:test
+npm run deploy:stage
+npm run deploy:prod
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Finally, you'll be able to access the deployed app from this URLs:
+https://s3.us-east-2.amazonaws.com/dev-angular/index.html
+https://s3.us-east-2.amazonaws.com/test-angular/index.html
+https://s3.us-east-2.amazonaws.com/stage-angular/index.html
+https://s3.us-east-2.amazonaws.com/prod-angular/index.html
