@@ -4,21 +4,25 @@ get-publications:
     - http:
         path: publication
         method: get
+        cors: true
 delete-publication:
   handler: functions/publication/deletePublication.handler
   events:
     - http:
         path: publication
         method: delete
+        cors: true
 create-publication:
   handler: functions/publication/createPublication.handler
   events:
     - http:
         path: publication
         method: post
+        cors: true
 update-publication:
   handler: functions/publication/updatePublication.handler
   events:
     - http:
         path: publication
-        method: put                        
+        method: put
+        cors: true

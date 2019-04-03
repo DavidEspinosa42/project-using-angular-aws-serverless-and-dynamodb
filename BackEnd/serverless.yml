@@ -11,6 +11,7 @@ provider:
   environment:
     authorsTable: ${self:provider.stage}-authorsTable
     publicationsTable: ${self:provider.stage}-publicationsTable
+    angularBucket: ${self:provider.stage}-angular
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -41,6 +42,10 @@ custom:
 
 resources:
   Resources:
+    angularBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.angularBucket}      
     authorsTable:
       Type: AWS::DynamoDB::Table
       Properties:

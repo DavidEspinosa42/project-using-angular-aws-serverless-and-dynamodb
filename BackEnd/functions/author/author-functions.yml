@@ -4,21 +4,25 @@ get-authors:
     - http:
         path: author
         method: get
+        cors: true
 delete-author:
   handler: functions/author/deleteAuthor.handler
   events:
     - http:
         path: author
         method: delete
+        cors: true
 create-author:
   handler: functions/author/createAuthor.handler
   events:
     - http:
         path: author
         method: post
+        cors: true
 update-author:
   handler: functions/author/updateAuthor.handler
   events:
     - http:
         path: author
-        method: put                
+        method: put
+        cors: true

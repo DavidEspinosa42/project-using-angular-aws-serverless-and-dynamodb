@@ -4,10 +4,10 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
-    "build:dev": "ng build -c dev",
-    "build:test": "ng build -c test",
-    "build:stage": "ng build -c stage",
-    "build:prod": "ng build -c production",
+    "build:dev": "ng build -c dev --base-href /dev-angular/",
+    "build:test": "ng build -c test --base-href /test-angular/",
+    "build:stage": "ng build -c stage --base-href /stage-angular/",
+    "build:prod": "ng build -c production --base-href /prod-angular/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
