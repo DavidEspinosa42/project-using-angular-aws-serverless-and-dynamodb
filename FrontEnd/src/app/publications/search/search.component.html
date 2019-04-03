@@ -1,4 +1,4 @@
-<mat-form-field *ngIf="publications" class="search">
+<mat-form-field class="search">
   <input type="search" matInput placeholder="Search by Title" (keyup)="searchByTitle()" [(ngModel)]="searchValue">
   <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear" (click)="clearSearch()">
     <mat-icon>close</mat-icon>

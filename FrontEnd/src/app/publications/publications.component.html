@@ -1,4 +1,4 @@
-<app-search (searchEvent)="searchByTitle($event)" [searchAuthor]="searchAuthor" [publications]="publications"></app-search>
+<app-search [hidden]="!(publications && publications.length > 0)" (searchEvent)="searchByTitle($event)" [searchAuthor]="searchAuthor"></app-search>
 <div [hidden]="!(publications && publications.length > 0)" class="mat-elevation-z8">
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort matSortDisableClear aria-label="Publications Table">
     <!-- Date Column -->

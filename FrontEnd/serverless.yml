@@ -1,0 +1,20 @@
+service:
+  name: sweat-works
+
+plugins:
+  - serverless-hooks-plugin
+  - serverless-s3-sync
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-east-2
+
+custom:
+  hooks:
+    before:package:createDeploymentArtifacts:
+      - npm run build:${opt:stage}
+  s3Sync:
+    - bucketName: ${opt:stage}-angular
+      localDir: dist/SweatWorks
+      acl: public-read

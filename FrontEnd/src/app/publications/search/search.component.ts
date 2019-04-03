@@ -7,7 +7,6 @@ import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChange
 })
 export class SearchComponent implements OnInit, OnChanges {
   @Input() searchAuthor: string;
-  @Input() publications: string;
   @Output() searchEvent = new EventEmitter<string>();
   public searchValue: string;
 

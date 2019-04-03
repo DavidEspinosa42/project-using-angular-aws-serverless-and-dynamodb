@@ -8,6 +8,10 @@
     "build:test": "ng build -c test --base-href /test-angular/",
     "build:stage": "ng build -c stage --base-href /stage-angular/",
     "build:prod": "ng build -c production --base-href /prod-angular/",
+    "deploy:dev": "serverless deploy --stage dev",
+    "deploy:test": "serverless deploy --stage test",
+    "deploy:stage": "serverless deploy --stage stage",
+    "deploy:prod": "serverless deploy --stage prod",    
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -49,6 +53,8 @@
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.4.0",
+    "serverless-hooks-plugin": "^1.1.0",
+    "serverless-s3-sync": "^1.7.3",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
