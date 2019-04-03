@@ -1,5 +1,5 @@
 export interface Publication {
-  datetime: string;
+  datetime?: string;
   author: string;
   title: string;
   body: string;

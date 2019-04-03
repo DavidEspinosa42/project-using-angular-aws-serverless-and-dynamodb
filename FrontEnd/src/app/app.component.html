@@ -14,10 +14,18 @@
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon>menu</mat-icon>
       </button>
       Publications
+      <button
+        type="button"
+        aria-label="Add publication"
+        mat-icon-button
+        matTooltip="Add Publication"
+        (click)="addPublication()">
+        <mat-icon>add_circle</mat-icon>
+    </button>
     </mat-toolbar>
-    <app-publications [searchAuthor]="searchAuthor" [searchTitle]="searchTitle"></app-publications>
+    <app-publications [searchAuthor]="searchAuthor"></app-publications>
   </mat-sidenav-content>
 </mat-sidenav-container>

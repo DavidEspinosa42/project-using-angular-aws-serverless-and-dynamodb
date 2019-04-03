@@ -14,7 +14,11 @@ export class AuthorsService {
   public getAuthors(): Observable<Author[]> {
     return this.http.get('http://localhost:3000/author')
       .pipe(
-        map((response: Author[]) => response),
+        map((response: Author[]) =>
+          response.sort((a, b) => {
+            return a.name.localeCompare(b.name);
+          })
+        ),
         catchError((error) => throwError(error))
       );
   }

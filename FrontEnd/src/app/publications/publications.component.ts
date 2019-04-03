@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatSortable } from '@angular/material';
 import { PublicationsService } from '../shared/services/publications.service';
 import { Publication } from '../shared/interfaces/publication';
 import { DeleteDialogComponent } from '../shared/dialogs/delete-dialog/delete-dialog.component';
 import { UpdatePublicationDialogComponent } from '../shared/dialogs/update-publication-dialog/update-publication-dialog.component';
+import { AddPublicationDialogComponent } from '../shared/dialogs/add-publication-dialog/add-publication-dialog.component';
 
 @Component({
   selector: 'app-publications',
@@ -11,7 +12,6 @@ import { UpdatePublicationDialogComponent } from '../shared/dialogs/update-publi
   styleUrls: ['./publications.component.scss']
 })
 export class PublicationsComponent implements OnInit, OnChanges {
-  @Input() searchTitle: string;
   @Input() searchAuthor: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -21,7 +21,11 @@ export class PublicationsComponent implements OnInit, OnChanges {
 
   public constructor(
     private publicationsService: PublicationsService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog) {
+      this.publicationsService.addPublicationButtonClicked$.subscribe(() => {
+        this.addPublication();
+      });
+    }
 
   ngOnInit() {
     this.getPublications();
@@ -81,10 +85,25 @@ export class PublicationsComponent implements OnInit, OnChanges {
         this.publications = response;
         this.dataSource = new MatTableDataSource(this.publications);
         this.dataSource.paginator = this.paginator;
+        this.sort.sort(({id: 'datetime', start: 'asc'}) as MatSortable);
         this.dataSource.sort = this.sort;
       }, (error: Error) => {
         console.error(error.message);
       });
+  }
+
+  private addPublication(): void {
+    const dialogRef = this.dialog.open(AddPublicationDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.publicationsService.createPublication(result)
+        .subscribe(() => {
+          this.getPublications();
+        }, (error: Error) => {
+          console.error(error.message);
+        });
+      }
+    });
   }
 
 }

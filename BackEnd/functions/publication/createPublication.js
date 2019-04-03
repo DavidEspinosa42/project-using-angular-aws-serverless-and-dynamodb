@@ -3,13 +3,14 @@
 const dynamoDB = require('../dynamoDB');
 
 module.exports.handler = async (event) => {
+  console.log(event)
   const params = {
     TableName: process.env.publicationsTable,
     Item: {
-      datetime: event.queryStringParameters.datetime,
-      title: event.queryStringParameters.title,
-      author: event.queryStringParameters.author,
-      body: event.queryStringParameters.body
+      datetime: new Date().toISOString(),
+      title: JSON.parse(event.body).title,
+      author: JSON.parse(event.body).author,
+      body: JSON.parse(event.body).body
     }
   };
 

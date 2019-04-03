@@ -25,6 +25,7 @@ import { SearchComponent } from './publications/search/search.component';
 import { AuthorComponent } from './author/author.component';
 import { DeleteDialogComponent } from './shared/dialogs/delete-dialog/delete-dialog.component';
 import { UpdatePublicationDialogComponent } from './shared/dialogs/update-publication-dialog/update-publication-dialog.component';
+import { AddPublicationDialogComponent } from './shared/dialogs/add-publication-dialog/add-publication-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UpdatePublicationDialogComponent } from './shared/dialogs/update-public
     SearchComponent,
     AuthorComponent,
     DeleteDialogComponent,
-    UpdatePublicationDialogComponent
+    UpdatePublicationDialogComponent,
+    AddPublicationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { UpdatePublicationDialogComponent } from './shared/dialogs/update-public
   ],
   entryComponents: [
     DeleteDialogComponent,
-    UpdatePublicationDialogComponent
+    UpdatePublicationDialogComponent,
+    AddPublicationDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
