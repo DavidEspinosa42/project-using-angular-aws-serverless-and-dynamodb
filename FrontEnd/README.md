@@ -1,5 +1,6 @@
 Inside the Frontend folder type the command:
 npm install
+
 You can start the frontend for development with:
 npm start
 
